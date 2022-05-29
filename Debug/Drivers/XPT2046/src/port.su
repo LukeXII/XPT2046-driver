@@ -1,0 +1,4 @@
+../Drivers/XPT2046/src/port.c:15:6:XPT2046_SPIConfig	8	static
+../Drivers/XPT2046/src/port.c:38:6:XPT2046_chipEnable	8	static
+../Drivers/XPT2046/src/port.c:43:6:XPT2046_chipDisable	8	static
+../Drivers/XPT2046/src/port.c:48:6:XPT2046_startConversion	16	static

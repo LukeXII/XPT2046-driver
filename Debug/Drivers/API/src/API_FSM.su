@@ -1,0 +1,6 @@
+../Drivers/API/src/API_FSM.c:18:6:FSM_Init	4	static
+../Drivers/API/src/API_FSM.c:23:6:FSM_Update	24	static
+../Drivers/API/src/API_FSM.c:33:6:no_Action	4	static
+../Drivers/API/src/API_FSM.c:38:6:actionA	16	static
+../Drivers/API/src/API_FSM.c:47:6:actionB	16	static
+../Drivers/API/src/API_FSM.c:58:6:actionC	8	static
