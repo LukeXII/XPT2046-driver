@@ -9,6 +9,7 @@
 #define API_INC_API_GPIO_H_
 
 #include "API_LCD.h"
+#include "XPT2046.h"
 #include "stm32f4xx_hal.h"  		/* <- HAL include */
 #include "stm32f4xx_nucleo_144.h"
 

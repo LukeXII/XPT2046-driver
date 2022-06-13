@@ -24,6 +24,7 @@
 #include "API_LCD.h"
 #include "API_FSM.h"
 #include "API_GPIO.h"
+#include "XPT2046.h"
 
 /** @addtogroup STM32F4xx_HAL_Examples
  * @{
@@ -79,20 +80,27 @@ int main(void)
 	BSP_LED_Init(LED3);
 
 	GPIO_Config();
+	XPT2046_SPIConfig();
 	LCD_Config();
+
 
 	LCD_Init();
 	uartinit();
 	mybuffer[0] = '\0';
 
-	FSM_Init();
+	//FSM_Init();
 
 	/* Infinite loop */
 	while (1)
 	{
+		HAL_Delay(500);
 
-		eventGenerator();
-		FSM_Update(newEvent);				// Corre la iteracion de la FMS. Chequea si hay nuevos eventos y actualiza el estado segun corresponda
+		getXCoord();
+		getYCoord();
+
+		uartSendString((uint8_t *)"\r\n");
+		//eventGenerator();
+		//FSM_Update(newEvent);				// Corre la iteracion de la FMS. Chequea si hay nuevos eventos y actualiza el estado segun corresponda
 
 	}
 }
