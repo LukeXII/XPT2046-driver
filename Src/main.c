@@ -86,7 +86,6 @@ int main(void)
 	XPT2046_SPIConfig();
 	LCD_Config();
 
-
 	LCD_Init();
 	uartinit();
 	mybuffer[0] = '\0';
@@ -102,13 +101,19 @@ int main(void)
 		ycoord = XPT2046_getCoord(COORD_Y);
 		pressure = XPT2046_getPressure();
 
+		XPT2046_convertToPixelCoord(&xcoord, &ycoord);
+
 		LCD_Fill_Screen(CYAN);
 
 		sprintf(str, "%d", xcoord);
 		str2[0] = 'X';
 		str2[1] = ':';
 		str2[2] = '\0';
-		LCD_Draw_Text(strcat(str2, str), 20, 20, PURPLE, 4, CYAN);
+
+		if(xcoord <= SCREEN_PIXELSIZE_X)
+			LCD_Draw_Text(strcat(str2, str), 20, 20, PURPLE, 4, CYAN);
+		else
+			LCD_Draw_Text(strcat(str2, "-"), 20, 20, PURPLE, 4, CYAN);
 
 		//uartSendString((uint8_t *)" X: ");
 		//uartSendString((uint8_t *)str);
@@ -117,7 +122,11 @@ int main(void)
 		str2[0] = 'Y';
 		str2[1] = ':';
 		str2[2] = '\0';
-		LCD_Draw_Text(strcat(str2, str), 20, 50, PURPLE, 4, CYAN);
+
+		if(xcoord <= SCREEN_PIXELSIZE_Y)
+			LCD_Draw_Text(strcat(str2, str), 20, 50, PURPLE, 4, CYAN);
+		else
+			LCD_Draw_Text(strcat(str2, "-"), 20, 50, PURPLE, 4, CYAN);
 
 		//uartSendString((uint8_t *)" Y: ");
 		//uartSendString((uint8_t *)str);

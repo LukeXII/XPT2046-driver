@@ -33,8 +33,12 @@ uint16_t XPT2046_getCoord(requestedData_t coord)
 
 	receivedData[2] = '\0';
 
+	if(!isControllerConfigured)						// Si el controlador no está configurado, aborta la operación
+		return -1;
+
 	XPT2046_chipEnable();
 
+	// Arma el byte de control segun el dato a consultar
 	switch(coord)
 	{
 		case COORD_X:
@@ -62,11 +66,12 @@ uint16_t XPT2046_getCoord(requestedData_t coord)
 			break;
 	}
 
-
+	// Envia el byte de control y luego recibe los dos bytes de la respuesta
 	XPT2046_startConversion(controlByte);
 	XPT2046_getConversionData(receivedData, 16);
 	XPT2046_chipDisable();
 
+	// Pone los bits de la respuesta en el orden correcto
 	coordData = XPT2046_convertReceivedData(receivedData[0], receivedData[1]);
 
 	return coordData;
@@ -76,6 +81,10 @@ uint16_t XPT2046_getPressure(void)
 {
 	uint16_t coordX, coordZ1, coordZ2;
 
+	if(!isControllerConfigured)
+		return -1;
+
+	// Obtiene las coordenadas X, Z1 y Z2 del controlador para poder calcular la presión
 	coordX = XPT2046_getCoord(COORD_X);
 	coordZ1 = XPT2046_getCoord(COORD_Z1);
 	coordZ2 = XPT2046_getCoord(COORD_Z2);
@@ -87,6 +96,10 @@ float XPT2046_getTemp(void)
 {
 	uint16_t temp0, temp1;
 
+	if(!isControllerConfigured)
+		return -1;
+
+	// Obtiene los valores de TEMP0 y TEMP1 del controlador
 	temp0 = XPT2046_getCoord(TEMP0);
 	temp1 = XPT2046_getCoord(TEMP1);
 
@@ -100,8 +113,8 @@ bool XPT2046_isPressed(void)
 
 void XPT2046_convertToPixelCoord(uint16_t * xCoord, uint16_t * yCoord)
 {
-	*xCoord = (*xCoord)*SCREEN_PIXELSIZE_X/MAX_12BIT_RES;
-	*yCoord = (*yCoord)*SCREEN_PIXELSIZE_Y/MAX_12BIT_RES;
+	*xCoord = (*xCoord - MARGEN_MAX_X_INFERIOR)*SCREEN_PIXELSIZE_X/(MAX_12BIT_RES - MARGEN_MAX_X_INFERIOR - MARGEN_MAX_X_SUPERIOR);
+	*yCoord = (*yCoord - MARGEN_MAX_Y_INFERIOR)*SCREEN_PIXELSIZE_Y/(MAX_12BIT_RES - MARGEN_MAX_Y_INFERIOR - MARGEN_MAX_Y_SUPERIOR);
 }
 
 static uint16_t XPT2046_convertReceivedData(uint16_t firstByte, uint16_t secondByte)

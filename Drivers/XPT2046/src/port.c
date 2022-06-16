@@ -10,7 +10,8 @@
 #include "stm32f4xx_hal.h"  		/* <- HAL include */
 #include "stm32f4xx_nucleo_144.h"
 
-
+#define	XPT2046_CS_PORT		GPIOA
+#define	XPT2046_CS_PIN		GPIO_PIN_4
 
 #define XPT2046_PENIRQ_PORT	GPIOC
 #define	XPT2046_PENIRQ_PIN	GPIO_PIN_6
@@ -19,6 +20,14 @@ static SPI_HandleTypeDef XPT2046_SPIHandle;
 
 void XPT2046_SPIConfig(void)
 {
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+    /* USER CODE END SPI3_MspInit 0 */
+      /* Peripheral clock enable */
+    __HAL_RCC_SPI3_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
 
     XPT2046_SPIHandle.Instance 					= SPI3;
     XPT2046_SPIHandle.Init.Mode 				= SPI_MODE_MASTER;
@@ -37,6 +46,33 @@ void XPT2046_SPIConfig(void)
     {
     	BSP_LED_On(LED2);
     }
+
+    GPIO_InitStruct.Pin = XPT2046_CS_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    HAL_GPIO_WritePin(GPIOA, XPT2046_CS_PIN, GPIO_PIN_SET);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_6;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    /**SPI3 GPIO Configuration
+    PB3 ------> SPI3_SCK
+    PB4 ------> SPI3_MISO
+    PB5 ------> SPI3_MOSI
+    PA4 ------> SPI3_NSS
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -63,7 +99,7 @@ void XPT2046_getConversionData(uint8_t * dataPtr, uint16_t length)
 
 	aux[0] = 0x00;
 	aux[1] = 0x00;
-	//HAL_SPI_Receive(&XPT2046_SPIHandle, dataPtr, length, 10);
+
 	HAL_SPI_TransmitReceive(&XPT2046_SPIHandle, aux, dataPtr, 2, 10);
 }
 
