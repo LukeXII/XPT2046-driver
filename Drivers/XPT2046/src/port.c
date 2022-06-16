@@ -7,6 +7,14 @@
 
 #include "XPT2046.h"
 
+#include "stm32f4xx_hal.h"  		/* <- HAL include */
+#include "stm32f4xx_nucleo_144.h"
+
+
+
+#define XPT2046_PENIRQ_PORT	GPIOC
+#define	XPT2046_PENIRQ_PIN	GPIO_PIN_6
+
 static SPI_HandleTypeDef XPT2046_SPIHandle;
 
 void XPT2046_SPIConfig(void)
@@ -59,6 +67,13 @@ void XPT2046_getConversionData(uint8_t * dataPtr, uint16_t length)
 	HAL_SPI_TransmitReceive(&XPT2046_SPIHandle, aux, dataPtr, 2, 10);
 }
 
+bool XPT2046_readPENIRQ(void)
+{
+	bool penirqStatus = false;
 
-//HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)
+	if(HAL_GPIO_ReadPin(XPT2046_PENIRQ_PORT, XPT2046_PENIRQ_PIN) == GPIO_PIN_RESET)
+		penirqStatus = true;
+
+	return penirqStatus;
+}
 

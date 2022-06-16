@@ -69,6 +69,9 @@ int main(void)
        - Set NVIC Group Priority to 4
        - Low Level Initialization
 	 */
+	char str[10], str2[10];
+	uint16_t xcoord, ycoord, pressure;
+
 	HAL_Init();
 
 	/* Configure the system clock to 180 MHz */
@@ -88,19 +91,57 @@ int main(void)
 	uartinit();
 	mybuffer[0] = '\0';
 
-	//FSM_Init();
+	XPT2046_setControllerConfig(RES_12BITS, MODE_DIFF, PD_LOWPOWER, 346);
 
 	/* Infinite loop */
 	while (1)
 	{
 		HAL_Delay(500);
 
-		getXCoord();
-		getYCoord();
+		xcoord = XPT2046_getCoord(COORD_X);
+		ycoord = XPT2046_getCoord(COORD_Y);
+		pressure = XPT2046_getPressure();
 
-		uartSendString((uint8_t *)"\r\n");
-		//eventGenerator();
-		//FSM_Update(newEvent);				// Corre la iteracion de la FMS. Chequea si hay nuevos eventos y actualiza el estado segun corresponda
+		LCD_Fill_Screen(CYAN);
+
+		sprintf(str, "%d", xcoord);
+		str2[0] = 'X';
+		str2[1] = ':';
+		str2[2] = '\0';
+		LCD_Draw_Text(strcat(str2, str), 20, 20, PURPLE, 4, CYAN);
+
+		//uartSendString((uint8_t *)" X: ");
+		//uartSendString((uint8_t *)str);
+
+		sprintf(str, "%d", ycoord);
+		str2[0] = 'Y';
+		str2[1] = ':';
+		str2[2] = '\0';
+		LCD_Draw_Text(strcat(str2, str), 20, 50, PURPLE, 4, CYAN);
+
+		//uartSendString((uint8_t *)" Y: ");
+		//uartSendString((uint8_t *)str);
+
+		sprintf(str, "%d", pressure);
+		str2[0] = 'P';
+		str2[1] = ':';
+		str2[2] = '\0';
+		LCD_Draw_Text(strcat(str2, str), 20, 80, PURPLE, 4, CYAN);
+
+		str2[0] = 'P';
+		str2[1] = 'E';
+		str2[2] = 'N';
+		str2[3] = ':';
+		str2[4] = '\0';
+		if(XPT2046_isPressed())
+			LCD_Draw_Text(strcat(str2, "SI"), 20, 110, PURPLE, 4, CYAN);
+		else
+			LCD_Draw_Text(strcat(str2, "NO"), 20, 110, PURPLE, 4, CYAN);
+
+		//uartSendString((uint8_t *)" P: ");
+		//uartSendString((uint8_t *)str);
+
+		//uartSendString((uint8_t *)"\r\n");
 
 	}
 }
