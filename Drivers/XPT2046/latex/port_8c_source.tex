@@ -1,0 +1,115 @@
+\hypertarget{port_8c_source}{}\doxysection{port.\+c}
+\label{port_8c_source}\index{src/port.c@{src/port.c}}
+\mbox{\hyperlink{port_8c}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00002}00002 \textcolor{comment}{ * port.c}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00003}00003 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00004}00004 \textcolor{comment}{ *  Created on: May 28, 2022}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00005}00005 \textcolor{comment}{ *      Author: Lucas}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00006}00006 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_x_p_t2046_8h}{XPT2046.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00010}00010 \textcolor{preprocessor}{\#include "{}stm32f4xx\_hal.h"{}}          \textcolor{comment}{/* <-\/ HAL include */}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00011}00011 \textcolor{preprocessor}{\#include "{}stm32f4xx\_nucleo\_144.h"{}}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00013}\mbox{\hyperlink{port_8c_a52de17f4587a0835937d946fe342a1db}{00013}} \textcolor{preprocessor}{\#define XPT2046\_CS\_PORT     GPIOA}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00014}\mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{00014}} \textcolor{preprocessor}{\#define XPT2046\_CS\_PIN      GPIO\_PIN\_4}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00016}\mbox{\hyperlink{port_8c_aec6f328ba4aec76912008d5aa9ffc656}{00016}} \textcolor{preprocessor}{\#define XPT2046\_PENIRQ\_PORT GPIOC}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00017}\mbox{\hyperlink{port_8c_a75ffe57e1df1923f1afd31e3c849c644}{00017}} \textcolor{preprocessor}{\#define XPT2046\_PENIRQ\_PIN  GPIO\_PIN\_6}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00019}\mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{00019}} \textcolor{keyword}{static} SPI\_HandleTypeDef \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}};}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00021}\mbox{\hyperlink{_x_p_t2046_8h_aacd0c6cdb8ac9ec9724e003907dd6964}{00021}} \textcolor{keywordtype}{void} \mbox{\hyperlink{port_8c_aacd0c6cdb8ac9ec9724e003907dd6964}{XPT2046\_SPIConfig}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00023}00023     GPIO\_InitTypeDef GPIO\_InitStruct;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00025}00025     \textcolor{comment}{/* USER CODE END SPI3\_MspInit 0 */}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00026}00026       \textcolor{comment}{/* Peripheral clock enable */}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00027}00027     \_\_HAL\_RCC\_SPI3\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00028}00028     \_\_HAL\_RCC\_GPIOB\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00029}00029     \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00030}00030     \_\_HAL\_RCC\_GPIOC\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00032}00032     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Instance                     = SPI3;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00033}00033     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.Mode                = SPI\_MODE\_MASTER;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00034}00034     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.Direction           = SPI\_DIRECTION\_2LINES;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00035}00035     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.DataSize            = SPI\_DATASIZE\_8BIT;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00036}00036     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.CLKPolarity             = SPI\_POLARITY\_LOW;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00037}00037     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.CLKPhase            = SPI\_PHASE\_1EDGE;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00038}00038     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.NSS                     = SPI\_NSS\_SOFT;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00039}00039     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.BaudRatePrescaler   = SPI\_BAUDRATEPRESCALER\_8;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00040}00040     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.FirstBit            = SPI\_FIRSTBIT\_MSB;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00041}00041     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.TIMode              = SPI\_TIMODE\_DISABLED;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00042}00042     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.CRCCalculation      = SPI\_CRCCALCULATION\_DISABLED;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00043}00043     \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}.Init.CRCPolynomial       = 10;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00045}00045     \textcolor{keywordflow}{if} (HAL\_SPI\_Init(\&\mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}) != HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00046}00046     \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00047}00047         BSP\_LED\_On(LED2);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00050}00050     GPIO\_InitStruct.Pin = \mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{XPT2046\_CS\_PIN}};}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00051}00051     GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00052}00052     GPIO\_InitStruct.Pull = GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00053}00053     GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_VERY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00054}00054     HAL\_GPIO\_Init(GPIOA, \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00056}00056     HAL\_GPIO\_WritePin(GPIOA, \mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{XPT2046\_CS\_PIN}}, GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00058}00058     GPIO\_InitStruct.Pin = GPIO\_PIN\_6;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00059}00059     GPIO\_InitStruct.Mode = GPIO\_MODE\_INPUT;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00060}00060     GPIO\_InitStruct.Pull = GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00061}00061     GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_VERY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00062}00062     HAL\_GPIO\_Init(GPIOC, \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00070}00070     GPIO\_InitStruct.Pin = GPIO\_PIN\_3 | GPIO\_PIN\_4 | GPIO\_PIN\_5;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00071}00071     GPIO\_InitStruct.Mode = GPIO\_MODE\_AF\_PP;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00072}00072     GPIO\_InitStruct.Pull = GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00073}00073     GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_VERY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00074}00074     GPIO\_InitStruct.Alternate = GPIO\_AF6\_SPI3;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00075}00075     HAL\_GPIO\_Init(GPIOB, \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00079}\mbox{\hyperlink{_x_p_t2046_8h_a9202a767dca565a661eadb1987d7e2d6}{00079}} \textcolor{keywordtype}{void} \mbox{\hyperlink{port_8c_a9202a767dca565a661eadb1987d7e2d6}{XPT2046\_chipEnable}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00080}00080 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00081}00081     HAL\_GPIO\_WritePin(\mbox{\hyperlink{port_8c_a52de17f4587a0835937d946fe342a1db}{XPT2046\_CS\_PORT}}, \mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{XPT2046\_CS\_PIN}}, GPIO\_PIN\_RESET);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00084}\mbox{\hyperlink{_x_p_t2046_8h_a1d845a3398c90565ab9109c5d210bbe4}{00084}} \textcolor{keywordtype}{void} \mbox{\hyperlink{port_8c_a1d845a3398c90565ab9109c5d210bbe4}{XPT2046\_chipDisable}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00085}00085 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00086}00086     HAL\_GPIO\_WritePin(\mbox{\hyperlink{port_8c_a52de17f4587a0835937d946fe342a1db}{XPT2046\_CS\_PORT}}, \mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{XPT2046\_CS\_PIN}}, GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00089}\mbox{\hyperlink{_x_p_t2046_8h_af5610af08a4da6c5bbbe063727c768b7}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{port_8c_af5610af08a4da6c5bbbe063727c768b7}{XPT2046\_startConversion}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} data)}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00090}00090 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00092}00092     HAL\_SPI\_Transmit(\&\mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}, \&data, 1, 10);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00094}00094 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00096}\mbox{\hyperlink{_x_p_t2046_8h_ab74a91ad243afa84b77297e6bf3a6a52}{00096}} \textcolor{keywordtype}{void} \mbox{\hyperlink{port_8c_ab74a91ad243afa84b77297e6bf3a6a52}{XPT2046\_getConversionData}}(uint8\_t * dataPtr, uint16\_t length)}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00097}00097 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00098}00098     uint8\_t aux[2];}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00100}00100     aux[0] = 0x00;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00101}00101     aux[1] = 0x00;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00103}00103     HAL\_SPI\_TransmitReceive(\&\mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\_SPIHandle}}, aux, dataPtr, 2, 10);}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00104}00104 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00106}\mbox{\hyperlink{_x_p_t2046_8h_a7b4f078e876a608e843422d657af0c2c}{00106}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{port_8c_a7b4f078e876a608e843422d657af0c2c}{XPT2046\_readPENIRQ}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00107}00107 \{}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00108}00108     \textcolor{keywordtype}{bool} penirqStatus = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00110}00110     \textcolor{keywordflow}{if}(HAL\_GPIO\_ReadPin(\mbox{\hyperlink{port_8c_aec6f328ba4aec76912008d5aa9ffc656}{XPT2046\_PENIRQ\_PORT}}, \mbox{\hyperlink{port_8c_a75ffe57e1df1923f1afd31e3c849c644}{XPT2046\_PENIRQ\_PIN}}) == GPIO\_PIN\_RESET)}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00111}00111         penirqStatus = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00113}00113     \textcolor{keywordflow}{return} penirqStatus;}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00114}00114 \}}
+\DoxyCodeLine{\Hypertarget{port_8c_source_l00115}00115 }
+
+\end{DoxyCode}

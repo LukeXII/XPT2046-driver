@@ -1,0 +1,193 @@
+\hypertarget{_x_p_t2046_8c}{}\doxysection{Referencia del Archivo src/\+XPT2046.c}
+\label{_x_p_t2046_8c}\index{src/XPT2046.c@{src/XPT2046.c}}
+{\ttfamily \#include \char`\"{}XPT2046.\+h\char`\"{}}\newline
+\doxysubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}{XPT2046\+\_\+convert\+Received\+Data}} (uint16\+\_\+t first\+Byte, uint16\+\_\+t second\+Byte)
+\item 
+void \mbox{\hyperlink{_x_p_t2046_8c_a81e5426250cf8c57de239aa4e590f6c5}{XPT2046\+\_\+set\+Controller\+Config}} (\mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}} res, \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}} mode, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}} pd, uint16\+\_\+t rxplate)
+\begin{DoxyCompactList}\small\item\em Configura el handler con los parámetros especificados. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\+\_\+get\+Coord}} (\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}} coord)
+\begin{DoxyCompactList}\small\item\em Realiza la consulta de la coordenada. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_x_p_t2046_8c_aa918f24d97aff4cb300e70f526c0e135}{XPT2046\+\_\+get\+Pressure}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la presión ejercida sobre la pantalla. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_x_p_t2046_8c_a8c6ad8261bb115bfa1dad8ad5275e122}{XPT2046\+\_\+get\+Temp}} (void)
+\begin{DoxyCompactList}\small\item\em Realiza la consulta de la temperatura y computa el valor de acuerdo a la fórmula especificada en las hojas de datos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_x_p_t2046_8c_ab6752751f5b8842af143fc80fd4576eb}{XPT2046\+\_\+is\+Pressed}} (void)
+\begin{DoxyCompactList}\small\item\em Consulta la señal PENIRQ del controlador, indicando si se está o no tocando la pantalla. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8c_a866c809b3afee72d0c801bdad016e97d}{XPT2046\+\_\+convert\+To\+Pixel\+Coord}} (uint16\+\_\+t $\ast$x\+Coord, uint16\+\_\+t $\ast$y\+Coord)
+\begin{DoxyCompactList}\small\item\em Convierte las coordenadas X e Y obtenidos con la función get\+Coord en coordenadas de pixeles en la pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned char \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\+\_\+\+BYTE\+\_\+\+LOW}} = 0b0000
+\item 
+static \mbox{\hyperlink{struct_x_p_t2046_handler__t}{XPT2046\+Handler\+\_\+t}} \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{ts\+Handler}}
+\item 
+static bool \mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{is\+Controller\+Configured}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de las funciones}
+\mbox{\Hypertarget{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}\label{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_convertReceivedData@{XPT2046\_convertReceivedData}}
+\index{XPT2046\_convertReceivedData@{XPT2046\_convertReceivedData}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_convertReceivedData()}{XPT2046\_convertReceivedData()}}
+{\footnotesize\ttfamily static uint16\+\_\+t XPT2046\+\_\+convert\+Received\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{first\+Byte,  }\item[{uint16\+\_\+t}]{second\+Byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00120}{120}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_a866c809b3afee72d0c801bdad016e97d}\label{_x_p_t2046_8c_a866c809b3afee72d0c801bdad016e97d}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_convertToPixelCoord@{XPT2046\_convertToPixelCoord}}
+\index{XPT2046\_convertToPixelCoord@{XPT2046\_convertToPixelCoord}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_convertToPixelCoord()}{XPT2046\_convertToPixelCoord()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+convert\+To\+Pixel\+Coord (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{x\+Coord,  }\item[{uint16\+\_\+t $\ast$}]{y\+Coord }\end{DoxyParamCaption})}
+
+
+
+Convierte las coordenadas X e Y obtenidos con la función get\+Coord en coordenadas de pixeles en la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve las coordenadas X e Y mapeadas a pixeles de la pantalla. El rango de valores es de 0 a 320 para el eje X y de 0 a 240 para el Y 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00114}{114}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}\label{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_getCoord@{XPT2046\_getCoord}}
+\index{XPT2046\_getCoord@{XPT2046\_getCoord}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getCoord()}{XPT2046\_getCoord()}}
+{\footnotesize\ttfamily uint16\+\_\+t XPT2046\+\_\+get\+Coord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}}}]{coord }\end{DoxyParamCaption})}
+
+
+
+Realiza la consulta de la coordenada. 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\mbox{\texttt{ in}}  & {\em coord} & Valor a consultar al ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor de la coordenada consultada. Representa el valor convertido por el ADC del controlador. Rango de valores\+: 0 a 4095 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00028}{28}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_aa918f24d97aff4cb300e70f526c0e135}\label{_x_p_t2046_8c_aa918f24d97aff4cb300e70f526c0e135}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_getPressure@{XPT2046\_getPressure}}
+\index{XPT2046\_getPressure@{XPT2046\_getPressure}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getPressure()}{XPT2046\_getPressure()}}
+{\footnotesize\ttfamily uint16\+\_\+t XPT2046\+\_\+get\+Pressure (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la presión ejercida sobre la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la presión sobre la pantalla 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00080}{80}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_a8c6ad8261bb115bfa1dad8ad5275e122}\label{_x_p_t2046_8c_a8c6ad8261bb115bfa1dad8ad5275e122}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_getTemp@{XPT2046\_getTemp}}
+\index{XPT2046\_getTemp@{XPT2046\_getTemp}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getTemp()}{XPT2046\_getTemp()}}
+{\footnotesize\ttfamily float XPT2046\+\_\+get\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Realiza la consulta de la temperatura y computa el valor de acuerdo a la fórmula especificada en las hojas de datos. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la temperatura del chip 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00095}{95}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_ab6752751f5b8842af143fc80fd4576eb}\label{_x_p_t2046_8c_ab6752751f5b8842af143fc80fd4576eb}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_isPressed@{XPT2046\_isPressed}}
+\index{XPT2046\_isPressed@{XPT2046\_isPressed}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_isPressed()}{XPT2046\_isPressed()}}
+{\footnotesize\ttfamily bool XPT2046\+\_\+is\+Pressed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Consulta la señal PENIRQ del controlador, indicando si se está o no tocando la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si se este tocando, false en caso contrario 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00109}{109}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_a81e5426250cf8c57de239aa4e590f6c5}\label{_x_p_t2046_8c_a81e5426250cf8c57de239aa4e590f6c5}} 
+\index{XPT2046.c@{XPT2046.c}!XPT2046\_setControllerConfig@{XPT2046\_setControllerConfig}}
+\index{XPT2046\_setControllerConfig@{XPT2046\_setControllerConfig}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_setControllerConfig()}{XPT2046\_setControllerConfig()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+set\+Controller\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}}}]{res,  }\item[{\mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}}}]{mode,  }\item[{\mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}}}]{pd,  }\item[{uint16\+\_\+t}]{rxplate }\end{DoxyParamCaption})}
+
+
+
+Configura el handler con los parámetros especificados. 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\mbox{\texttt{ in}}  & {\em res} & Resolución del ADC \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & Modo de operación del ADC \\
+\hline
+\mbox{\texttt{ in}}  & {\em pd} & Modo power down \\
+\hline
+\mbox{\texttt{ in}}  & {\em rxplate} & Valor de la red resistiva del eje X \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor de la coordenada consultada. El valor representa el valor convertido por el ADC del controlador. Rango de valores\+: 0 a 4095 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00016}{16}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+
+
+\doxysubsection{Documentación de las variables}
+\mbox{\Hypertarget{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}\label{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}} 
+\index{XPT2046.c@{XPT2046.c}!CTRL\_BYTE\_LOW@{CTRL\_BYTE\_LOW}}
+\index{CTRL\_BYTE\_LOW@{CTRL\_BYTE\_LOW}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_LOW}{CTRL\_BYTE\_LOW}}
+{\footnotesize\ttfamily unsigned char CTRL\+\_\+\+BYTE\+\_\+\+LOW = 0b0000\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00010}{10}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}\label{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}} 
+\index{XPT2046.c@{XPT2046.c}!isControllerConfigured@{isControllerConfigured}}
+\index{isControllerConfigured@{isControllerConfigured}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{isControllerConfigured}{isControllerConfigured}}
+{\footnotesize\ttfamily bool is\+Controller\+Configured = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00014}{14}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}\label{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}} 
+\index{XPT2046.c@{XPT2046.c}!tsHandler@{tsHandler}}
+\index{tsHandler@{tsHandler}!XPT2046.c@{XPT2046.c}}
+\doxysubsubsection{\texorpdfstring{tsHandler}{tsHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_x_p_t2046_handler__t}{XPT2046\+Handler\+\_\+t}} ts\+Handler\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00011}{11}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+

@@ -1,0 +1,179 @@
+\hypertarget{port_8c}{}\doxysection{Referencia del Archivo src/port.c}
+\label{port_8c}\index{src/port.c@{src/port.c}}
+{\ttfamily \#include \char`\"{}XPT2046.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+nucleo\+\_\+144.\+h\char`\"{}}\newline
+\doxysubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{port_8c_a52de17f4587a0835937d946fe342a1db}{XPT2046\+\_\+\+CS\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{port_8c_aa56b58bb9dd341268edf891bf924ab66}{XPT2046\+\_\+\+CS\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+4
+\item 
+\#define \mbox{\hyperlink{port_8c_aec6f328ba4aec76912008d5aa9ffc656}{XPT2046\+\_\+\+PENIRQ\+\_\+\+PORT}}~GPIOC
+\item 
+\#define \mbox{\hyperlink{port_8c_a75ffe57e1df1923f1afd31e3c849c644}{XPT2046\+\_\+\+PENIRQ\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+6
+\end{DoxyCompactItemize}
+\doxysubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{port_8c_aacd0c6cdb8ac9ec9724e003907dd6964}{XPT2046\+\_\+\+SPIConfig}} (void)
+\begin{DoxyCompactList}\small\item\em Configura el periférico SPI mediante el handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{port_8c_a9202a767dca565a661eadb1987d7e2d6}{XPT2046\+\_\+chip\+Enable}} (void)
+\begin{DoxyCompactList}\small\item\em Habilita la interfaz SPI poniendo el pin CS en nivel bajo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{port_8c_a1d845a3398c90565ab9109c5d210bbe4}{XPT2046\+\_\+chip\+Disable}} (void)
+\begin{DoxyCompactList}\small\item\em Deshabilita la interfaz SPI poniendo el pin CS en nivel alto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{port_8c_af5610af08a4da6c5bbbe063727c768b7}{XPT2046\+\_\+start\+Conversion}} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Envía el byte de control al periférico SPI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{port_8c_ab74a91ad243afa84b77297e6bf3a6a52}{XPT2046\+\_\+get\+Conversion\+Data}} (uint8\+\_\+t $\ast$data\+Ptr, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Envía 16 clocks por SPI para recibir dos bytes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{port_8c_a7b4f078e876a608e843422d657af0c2c}{XPT2046\+\_\+read\+PENIRQ}} (void)
+\begin{DoxyCompactList}\small\item\em Lee el pin asociado a la señal PENIRQ del controlador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static SPI\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{port_8c_ae6f3d355125b73c0096473247b797724}{XPT2046\+\_\+\+SPIHandle}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de los \textquotesingle{}defines\textquotesingle{}}
+\mbox{\Hypertarget{port_8c_aa56b58bb9dd341268edf891bf924ab66}\label{port_8c_aa56b58bb9dd341268edf891bf924ab66}} 
+\index{port.c@{port.c}!XPT2046\_CS\_PIN@{XPT2046\_CS\_PIN}}
+\index{XPT2046\_CS\_PIN@{XPT2046\_CS\_PIN}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_CS\_PIN}{XPT2046\_CS\_PIN}}
+{\footnotesize\ttfamily \#define XPT2046\+\_\+\+CS\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+4}
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00014}{14}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_a52de17f4587a0835937d946fe342a1db}\label{port_8c_a52de17f4587a0835937d946fe342a1db}} 
+\index{port.c@{port.c}!XPT2046\_CS\_PORT@{XPT2046\_CS\_PORT}}
+\index{XPT2046\_CS\_PORT@{XPT2046\_CS\_PORT}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_CS\_PORT}{XPT2046\_CS\_PORT}}
+{\footnotesize\ttfamily \#define XPT2046\+\_\+\+CS\+\_\+\+PORT~GPIOA}
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00013}{13}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_a75ffe57e1df1923f1afd31e3c849c644}\label{port_8c_a75ffe57e1df1923f1afd31e3c849c644}} 
+\index{port.c@{port.c}!XPT2046\_PENIRQ\_PIN@{XPT2046\_PENIRQ\_PIN}}
+\index{XPT2046\_PENIRQ\_PIN@{XPT2046\_PENIRQ\_PIN}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_PENIRQ\_PIN}{XPT2046\_PENIRQ\_PIN}}
+{\footnotesize\ttfamily \#define XPT2046\+\_\+\+PENIRQ\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+6}
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00017}{17}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_aec6f328ba4aec76912008d5aa9ffc656}\label{port_8c_aec6f328ba4aec76912008d5aa9ffc656}} 
+\index{port.c@{port.c}!XPT2046\_PENIRQ\_PORT@{XPT2046\_PENIRQ\_PORT}}
+\index{XPT2046\_PENIRQ\_PORT@{XPT2046\_PENIRQ\_PORT}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_PENIRQ\_PORT}{XPT2046\_PENIRQ\_PORT}}
+{\footnotesize\ttfamily \#define XPT2046\+\_\+\+PENIRQ\+\_\+\+PORT~GPIOC}
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00016}{16}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+
+
+\doxysubsection{Documentación de las funciones}
+\mbox{\Hypertarget{port_8c_a1d845a3398c90565ab9109c5d210bbe4}\label{port_8c_a1d845a3398c90565ab9109c5d210bbe4}} 
+\index{port.c@{port.c}!XPT2046\_chipDisable@{XPT2046\_chipDisable}}
+\index{XPT2046\_chipDisable@{XPT2046\_chipDisable}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_chipDisable()}{XPT2046\_chipDisable()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+chip\+Disable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Deshabilita la interfaz SPI poniendo el pin CS en nivel alto. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00084}{84}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_a9202a767dca565a661eadb1987d7e2d6}\label{port_8c_a9202a767dca565a661eadb1987d7e2d6}} 
+\index{port.c@{port.c}!XPT2046\_chipEnable@{XPT2046\_chipEnable}}
+\index{XPT2046\_chipEnable@{XPT2046\_chipEnable}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_chipEnable()}{XPT2046\_chipEnable()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+chip\+Enable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Habilita la interfaz SPI poniendo el pin CS en nivel bajo. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00079}{79}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_ab74a91ad243afa84b77297e6bf3a6a52}\label{port_8c_ab74a91ad243afa84b77297e6bf3a6a52}} 
+\index{port.c@{port.c}!XPT2046\_getConversionData@{XPT2046\_getConversionData}}
+\index{XPT2046\_getConversionData@{XPT2046\_getConversionData}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getConversionData()}{XPT2046\_getConversionData()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+get\+Conversion\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data\+Ptr,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Envía 16 clocks por SPI para recibir dos bytes. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00096}{96}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_a7b4f078e876a608e843422d657af0c2c}\label{port_8c_a7b4f078e876a608e843422d657af0c2c}} 
+\index{port.c@{port.c}!XPT2046\_readPENIRQ@{XPT2046\_readPENIRQ}}
+\index{XPT2046\_readPENIRQ@{XPT2046\_readPENIRQ}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_readPENIRQ()}{XPT2046\_readPENIRQ()}}
+{\footnotesize\ttfamily bool XPT2046\+\_\+read\+PENIRQ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Lee el pin asociado a la señal PENIRQ del controlador. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00106}{106}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_aacd0c6cdb8ac9ec9724e003907dd6964}\label{port_8c_aacd0c6cdb8ac9ec9724e003907dd6964}} 
+\index{port.c@{port.c}!XPT2046\_SPIConfig@{XPT2046\_SPIConfig}}
+\index{XPT2046\_SPIConfig@{XPT2046\_SPIConfig}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_SPIConfig()}{XPT2046\_SPIConfig()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+\+SPIConfig (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configura el periférico SPI mediante el handler. 
+
+SPI3 GPIO Configuration PB3 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+SCK PB4 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+MISO PB5 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+MOSI PA4 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+NSS
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00021}{21}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{port_8c_af5610af08a4da6c5bbbe063727c768b7}\label{port_8c_af5610af08a4da6c5bbbe063727c768b7}} 
+\index{port.c@{port.c}!XPT2046\_startConversion@{XPT2046\_startConversion}}
+\index{XPT2046\_startConversion@{XPT2046\_startConversion}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_startConversion()}{XPT2046\_startConversion()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+start\+Conversion (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Envía el byte de control al periférico SPI. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00089}{89}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+
+
+\doxysubsection{Documentación de las variables}
+\mbox{\Hypertarget{port_8c_ae6f3d355125b73c0096473247b797724}\label{port_8c_ae6f3d355125b73c0096473247b797724}} 
+\index{port.c@{port.c}!XPT2046\_SPIHandle@{XPT2046\_SPIHandle}}
+\index{XPT2046\_SPIHandle@{XPT2046\_SPIHandle}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_SPIHandle}{XPT2046\_SPIHandle}}
+{\footnotesize\ttfamily SPI\+\_\+\+Handle\+Type\+Def XPT2046\+\_\+\+SPIHandle\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00019}{19}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+

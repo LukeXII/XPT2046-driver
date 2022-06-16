@@ -1,0 +1,133 @@
+\hypertarget{_x_p_t2046_8c_source}{}\doxysection{XPT2046.\+c}
+\label{_x_p_t2046_8c_source}\index{src/XPT2046.c@{src/XPT2046.c}}
+\mbox{\hyperlink{_x_p_t2046_8c}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00002}00002 \textcolor{comment}{ * XPT2046.c}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00003}00003 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00004}00004 \textcolor{comment}{ *  Created on: May 28, 2022}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00005}00005 \textcolor{comment}{ *      Author: Lucas}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00006}00006 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_x_p_t2046_8h}{XPT2046.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00010}\mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{00010}} \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}} = 0b0000;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00011}\mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{00011}} \textcolor{keyword}{static} \mbox{\hyperlink{struct_x_p_t2046_handler__t}{XPT2046Handler\_t}} \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00013}00013 \textcolor{keyword}{static} uint16\_t \mbox{\hyperlink{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}{XPT2046\_convertReceivedData}}(uint16\_t firstByte, uint16\_t secondByte);}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00014}\mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{00014}} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{isControllerConfigured}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00016}\mbox{\hyperlink{_x_p_t2046_8h_a81e5426250cf8c57de239aa4e590f6c5}{00016}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_x_p_t2046_8c_a81e5426250cf8c57de239aa4e590f6c5}{XPT2046\_setControllerConfig}}(\mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adcRes\_t}} res, \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adcMode\_t}} mode, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{powerMode\_t}} pd, uint16\_t rxplate)}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00018}00018     \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}}.\mbox{\hyperlink{struct_x_p_t2046_handler__t_a4be19b8e93f379a460a80a1b49cca4f0}{res}} = res;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00019}00019     \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}}.\mbox{\hyperlink{struct_x_p_t2046_handler__t_ab4f0d0342920bd2836ee409f95e51183}{mode}} = mode;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00020}00020     \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}}.\mbox{\hyperlink{struct_x_p_t2046_handler__t_afd3eefb9ef834a29f97926ada1532ff2}{powerMode}} = pd;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00021}00021     \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}}.\mbox{\hyperlink{struct_x_p_t2046_handler__t_a742a0fc175aaa97b7faf6daeec9ad44d}{RxPlate}} = rxplate;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00023}00023     \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}} = (res << 3) | (mode << 2) | pd;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00025}00025     \mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{isControllerConfigured}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00028}\mbox{\hyperlink{_x_p_t2046_8h_aead81beff8686109638009b9f602dceb}{00028}} uint16\_t \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requestedData\_t}} coord)}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00030}00030     uint8\_t receivedData[3];}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00031}00031     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} controlByte;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00032}00032     uint16\_t coordData;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00034}00034     receivedData[2] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00036}00036     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{isControllerConfigured}})                       \textcolor{comment}{// Si el controlador no está configurado, aborta la operación}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00037}00037         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00039}00039     \mbox{\hyperlink{_x_p_t2046_8h_a9202a767dca565a661eadb1987d7e2d6}{XPT2046\_chipEnable}}();}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00041}00041     \textcolor{comment}{// Arma el byte de control segun el dato a consultar}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00042}00042     \textcolor{keywordflow}{switch}(coord)}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00043}00043     \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00044}00044         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca90b0030b76559a27bf6099278d48d001}{COORD\_X}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00045}00045             controlByte = (\mbox{\hyperlink{_x_p_t2046_8h_a13887d4cedbf1ecd2e16a9f429f21eeb}{CTRL\_BYTE\_HIGH\_X}} << 4) | \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00046}00046             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00048}00048         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca63ebf6d854e134f261b0f03b54fac644}{COORD\_Y}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00049}00049             controlByte = (\mbox{\hyperlink{_x_p_t2046_8h_a722718c5e2191ea42b43359cdea825a0}{CTRL\_BYTE\_HIGH\_Y}} << 4) | \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00050}00050             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00052}00052         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca70cc9fb0d7eea3dad242ea689e834991}{COORD\_Z1}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00053}00053             controlByte = (\mbox{\hyperlink{_x_p_t2046_8h_a92bdb8cc485b126bb6e8cd976e7a6dcb}{CTRL\_BYTE\_HIGH\_Z1}} << 4) | \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00054}00054             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00056}00056         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca49a5d8b88f73cd231214a2d9f116865a}{COORD\_Z2}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00057}00057             controlByte = (\mbox{\hyperlink{_x_p_t2046_8h_af8e12daa8ecc1cc4fa42fe2ae3c72237}{CTRL\_BYTE\_HIGH\_Z2}} << 4) | \mbox{\hyperlink{_x_p_t2046_8c_afbd732f179645d859407c4a036ca50f4}{CTRL\_BYTE\_LOW}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00058}00058             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00060}00060         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca8128798e6da8000464edafb532213354}{TEMP0}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00061}00061             controlByte = \mbox{\hyperlink{_x_p_t2046_8h_a91eabad167318c0872bd671f729d0c47}{CTRL\_BYTE\_TEMP0}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00062}00062             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00064}00064         \textcolor{keywordflow}{case} \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3caedf4c90a6faca053d57b91c5fc07c4ba}{TEMP1}}:}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00065}00065             controlByte = \mbox{\hyperlink{_x_p_t2046_8h_aa6a982df8fd1e1bf98dc24e77f93d28e}{CTRL\_BYTE\_TEMP1}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00066}00066             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00069}00069     \textcolor{comment}{// Envia el byte de control y luego recibe los dos bytes de la respuesta}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00070}00070     \mbox{\hyperlink{_x_p_t2046_8h_af5610af08a4da6c5bbbe063727c768b7}{XPT2046\_startConversion}}(controlByte);}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00071}00071     \mbox{\hyperlink{_x_p_t2046_8h_ab74a91ad243afa84b77297e6bf3a6a52}{XPT2046\_getConversionData}}(receivedData, 16);}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00072}00072     \mbox{\hyperlink{_x_p_t2046_8h_a1d845a3398c90565ab9109c5d210bbe4}{XPT2046\_chipDisable}}();}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00074}00074     \textcolor{comment}{// Pone los bits de la respuesta en el orden correcto}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00075}00075     coordData = \mbox{\hyperlink{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}{XPT2046\_convertReceivedData}}(receivedData[0], receivedData[1]);}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00077}00077     \textcolor{keywordflow}{return} coordData;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00078}00078 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00080}\mbox{\hyperlink{_x_p_t2046_8h_aa918f24d97aff4cb300e70f526c0e135}{00080}} uint16\_t \mbox{\hyperlink{_x_p_t2046_8c_aa918f24d97aff4cb300e70f526c0e135}{XPT2046\_getPressure}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00081}00081 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00082}00082     uint16\_t coordX, coordZ1, coordZ2;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00084}00084     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{isControllerConfigured}})}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00085}00085         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00087}00087     \textcolor{comment}{// Obtiene las coordenadas X, Z1 y Z2 del controlador para poder calcular la presión}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00088}00088     coordX = \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca90b0030b76559a27bf6099278d48d001}{COORD\_X}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00089}00089     coordZ1 = \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca70cc9fb0d7eea3dad242ea689e834991}{COORD\_Z1}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00090}00090     coordZ2 = \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca49a5d8b88f73cd231214a2d9f116865a}{COORD\_Z2}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00092}00092     \textcolor{keywordflow}{return} \mbox{\hyperlink{_x_p_t2046_8c_aae4376b10262990311e7d7c39ce5391c}{tsHandler}}.\mbox{\hyperlink{struct_x_p_t2046_handler__t_a742a0fc175aaa97b7faf6daeec9ad44d}{RxPlate}}*coordX*(coordZ2/coordZ1 -\/ 1)/\mbox{\hyperlink{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}{MAX\_12BIT\_RES}};}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00093}00093 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00095}\mbox{\hyperlink{_x_p_t2046_8h_a8c6ad8261bb115bfa1dad8ad5275e122}{00095}} \textcolor{keywordtype}{float} \mbox{\hyperlink{_x_p_t2046_8c_a8c6ad8261bb115bfa1dad8ad5275e122}{XPT2046\_getTemp}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00096}00096 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00097}00097     uint16\_t temp0, temp1;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00099}00099     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{_x_p_t2046_8c_a1c33fb857c080277b54e546d1e57c077}{isControllerConfigured}})}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00100}00100         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00102}00102     \textcolor{comment}{// Obtiene los valores de TEMP0 y TEMP1 del controlador}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00103}00103     temp0 = \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca8128798e6da8000464edafb532213354}{TEMP0}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00104}00104     temp1 = \mbox{\hyperlink{_x_p_t2046_8c_aead81beff8686109638009b9f602dceb}{XPT2046\_getCoord}}(\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3caedf4c90a6faca053d57b91c5fc07c4ba}{TEMP1}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00106}00106     \textcolor{keywordflow}{return} 2.573*((float)temp1 -\/ (\textcolor{keywordtype}{float})temp0)*2500/4095;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00107}00107 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00109}\mbox{\hyperlink{_x_p_t2046_8h_ab6752751f5b8842af143fc80fd4576eb}{00109}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{_x_p_t2046_8c_ab6752751f5b8842af143fc80fd4576eb}{XPT2046\_isPressed}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00110}00110 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00111}00111     \textcolor{keywordflow}{return} \mbox{\hyperlink{_x_p_t2046_8h_a7b4f078e876a608e843422d657af0c2c}{XPT2046\_readPENIRQ}}();}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00112}00112 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00114}\mbox{\hyperlink{_x_p_t2046_8h_a866c809b3afee72d0c801bdad016e97d}{00114}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_x_p_t2046_8c_a866c809b3afee72d0c801bdad016e97d}{XPT2046\_convertToPixelCoord}}(uint16\_t * xCoord, uint16\_t * yCoord)}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00115}00115 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00116}00116     *xCoord = (*xCoord -\/ \mbox{\hyperlink{_x_p_t2046_8h_adf87b6257b2164146993257e8a0fe740}{MARGEN\_MAX\_X\_INFERIOR}})*\mbox{\hyperlink{_x_p_t2046_8h_aa30817c9de266aaece8f32cdb5999507}{SCREEN\_PIXELSIZE\_X}}/(\mbox{\hyperlink{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}{MAX\_12BIT\_RES}} -\/ \mbox{\hyperlink{_x_p_t2046_8h_adf87b6257b2164146993257e8a0fe740}{MARGEN\_MAX\_X\_INFERIOR}} -\/ \mbox{\hyperlink{_x_p_t2046_8h_a5a9e9d1f7bedc53758268c9c17bbfbbf}{MARGEN\_MAX\_X\_SUPERIOR}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00117}00117     *yCoord = (*yCoord -\/ \mbox{\hyperlink{_x_p_t2046_8h_a809c69427e4fa9463073ff4c2af7fc58}{MARGEN\_MAX\_Y\_INFERIOR}})*\mbox{\hyperlink{_x_p_t2046_8h_a1e8913b1100304ce96ef2eaca5fd5cc2}{SCREEN\_PIXELSIZE\_Y}}/(\mbox{\hyperlink{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}{MAX\_12BIT\_RES}} -\/ \mbox{\hyperlink{_x_p_t2046_8h_a809c69427e4fa9463073ff4c2af7fc58}{MARGEN\_MAX\_Y\_INFERIOR}} -\/ \mbox{\hyperlink{_x_p_t2046_8h_a583ba65d84857d7cc6bafeeaee9c7f5c}{MARGEN\_MAX\_Y\_SUPERIOR}});}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00118}00118 \}}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00120}\mbox{\hyperlink{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}{00120}} \textcolor{keyword}{static} uint16\_t \mbox{\hyperlink{_x_p_t2046_8c_ab40474e4aec12eb7ae1283621c60fa2f}{XPT2046\_convertReceivedData}}(uint16\_t firstByte, uint16\_t secondByte)}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00121}00121 \{}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00122}00122     uint16\_t coord;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00124}00124     coord = (firstByte << 5) | (secondByte >> 3);}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00126}00126     \textcolor{keywordflow}{return} coord;}
+\DoxyCodeLine{\Hypertarget{_x_p_t2046_8c_source_l00127}00127 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,622 @@
+\hypertarget{_x_p_t2046_8h}{}\doxysection{Referencia del Archivo inc/\+XPT2046.h}
+\label{_x_p_t2046_8h}\index{inc/XPT2046.h@{inc/XPT2046.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Estructuras de datos}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_x_p_t2046_handler__t}{XPT2046\+Handler\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Tipo de dato del handler del controlador ~\newline
+ Contiene la configuración del controlador y el valor resistivo de Rx-\/\+Plate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_adf87b6257b2164146993257e8a0fe740}{MARGEN\+\_\+\+MAX\+\_\+\+X\+\_\+\+INFERIOR}}~300
+\begin{DoxyCompactList}\small\item\em Margen maximo inferior del eje X. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a5a9e9d1f7bedc53758268c9c17bbfbbf}{MARGEN\+\_\+\+MAX\+\_\+\+X\+\_\+\+SUPERIOR}}~351
+\begin{DoxyCompactList}\small\item\em Margen maximo superior del eje X. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a809c69427e4fa9463073ff4c2af7fc58}{MARGEN\+\_\+\+MAX\+\_\+\+Y\+\_\+\+INFERIOR}}~464
+\begin{DoxyCompactList}\small\item\em Margen maximo inferior del eje Y. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a583ba65d84857d7cc6bafeeaee9c7f5c}{MARGEN\+\_\+\+MAX\+\_\+\+Y\+\_\+\+SUPERIOR}}~191
+\begin{DoxyCompactList}\small\item\em Margen maximo inferior del eje Y. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_aa30817c9de266aaece8f32cdb5999507}{SCREEN\+\_\+\+PIXELSIZE\+\_\+X}}~240
+\begin{DoxyCompactList}\small\item\em Alto de la panatalla en pixeles. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a1e8913b1100304ce96ef2eaca5fd5cc2}{SCREEN\+\_\+\+PIXELSIZE\+\_\+Y}}~320
+\begin{DoxyCompactList}\small\item\em Ancho de la panatalla en pixeles. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}{MAX\+\_\+12\+BIT\+\_\+\+RES}}~4095
+\begin{DoxyCompactList}\small\item\em Fondo de escala de 12 bits de resolución. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a6e35bea7269b6a7e3ff7da8f440db14f}{MAX\+\_\+8\+BIT\+\_\+\+RES}}~255
+\begin{DoxyCompactList}\small\item\em Fondo de escala de 8 bits de resolución. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a13887d4cedbf1ecd2e16a9f429f21eeb}{CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+X}}~0b1101
+\begin{DoxyCompactList}\small\item\em Parte baja del byte de control para conversión en eje X. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a722718c5e2191ea42b43359cdea825a0}{CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+Y}}~0b1001
+\begin{DoxyCompactList}\small\item\em Parte baja del byte de control para conversión en eje Y. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a92bdb8cc485b126bb6e8cd976e7a6dcb}{CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+\+Z1}}~0b1011
+\begin{DoxyCompactList}\small\item\em Parte baja del byte de control para conversión en eje Z1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_af8e12daa8ecc1cc4fa42fe2ae3c72237}{CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+\+Z2}}~0b1100
+\begin{DoxyCompactList}\small\item\em Parte baja del byte de control para conversión en eje Z2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_a91eabad167318c0872bd671f729d0c47}{CTRL\+\_\+\+BYTE\+\_\+\+TEMP0}}~0b10000100
+\begin{DoxyCompactList}\small\item\em Byte de control para conversión de temperatura TEMP0. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_x_p_t2046_8h_aa6a982df8fd1e1bf98dc24e77f93d28e}{CTRL\+\_\+\+BYTE\+\_\+\+TEMP1}}~0b11110100
+\begin{DoxyCompactList}\small\item\em Byte de control para conversión de temperatura TEMP0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca90b0030b76559a27bf6099278d48d001}{COORD\+\_\+X}}
+, \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca63ebf6d854e134f261b0f03b54fac644}{COORD\+\_\+Y}}
+, \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca70cc9fb0d7eea3dad242ea689e834991}{COORD\+\_\+\+Z1}}
+, \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca49a5d8b88f73cd231214a2d9f116865a}{COORD\+\_\+\+Z2}}
+, \newline
+\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca8128798e6da8000464edafb532213354}{TEMP0}}
+, \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3caedf4c90a6faca053d57b91c5fc07c4ba}{TEMP1}}
+ \}
+\begin{DoxyCompactList}\small\item\em Tipo de dato para el valor a pedir. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}} \{ \mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381a8115af14d5be7aaa9c7082e55e2deae0}{RES\+\_\+12\+BITS}} = 0
+, \mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381aad930e8a48d0e9a37859cc47d1317138}{RES\+\_\+8\+BITS}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Tipo de dato para la resolución del ADC. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}} \{ \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462abe789df44b20d33e0209eb77cbd4b99c}{MODE\+\_\+\+DIFF}} = 0
+, \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462a81a6794f17cf7dbc4f6e444c8189c733}{MODE\+\_\+\+SER}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Tipo de dato para el modo de conversión del ADC. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}} \{ \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da597a68df196288546f5a111e38c2ef4b}{PD\+\_\+\+LOWPOWER}} = 0b00
+, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da1f6eba94ab85510e6ab34a21fcc959a5}{PD\+\_\+\+ADCON}} = 0b01
+, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da83c88d58e745feacac58a75bba1f7b44}{PD\+\_\+\+ADCOFF}} = 0b10
+, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da2b4750591c6928e8718e80f4f7af6d1c}{PD\+\_\+\+ALLPOWERED}} = 0b11
+ \}
+\begin{DoxyCompactList}\small\item\em Tipo de dato para el modo de power down. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_aacd0c6cdb8ac9ec9724e003907dd6964}{XPT2046\+\_\+\+SPIConfig}} (void)
+\begin{DoxyCompactList}\small\item\em Configura el periférico SPI mediante el handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_a9202a767dca565a661eadb1987d7e2d6}{XPT2046\+\_\+chip\+Enable}} (void)
+\begin{DoxyCompactList}\small\item\em Habilita la interfaz SPI poniendo el pin CS en nivel bajo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_a1d845a3398c90565ab9109c5d210bbe4}{XPT2046\+\_\+chip\+Disable}} (void)
+\begin{DoxyCompactList}\small\item\em Deshabilita la interfaz SPI poniendo el pin CS en nivel alto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_af5610af08a4da6c5bbbe063727c768b7}{XPT2046\+\_\+start\+Conversion}} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Envía el byte de control al periférico SPI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_ab74a91ad243afa84b77297e6bf3a6a52}{XPT2046\+\_\+get\+Conversion\+Data}} (uint8\+\_\+t $\ast$data\+Ptr, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Envía 16 clocks por SPI para recibir dos bytes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_x_p_t2046_8h_a7b4f078e876a608e843422d657af0c2c}{XPT2046\+\_\+read\+PENIRQ}} (void)
+\begin{DoxyCompactList}\small\item\em Lee el pin asociado a la señal PENIRQ del controlador. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_x_p_t2046_8h_aead81beff8686109638009b9f602dceb}{XPT2046\+\_\+get\+Coord}} (\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}} coord)
+\begin{DoxyCompactList}\small\item\em Realiza la consulta de la coordenada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_a81e5426250cf8c57de239aa4e590f6c5}{XPT2046\+\_\+set\+Controller\+Config}} (\mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}} res, \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}} mode, \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}} pd, uint16\+\_\+t rxplate)
+\begin{DoxyCompactList}\small\item\em Configura el handler con los parámetros especificados. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_x_p_t2046_8h_a8c6ad8261bb115bfa1dad8ad5275e122}{XPT2046\+\_\+get\+Temp}} (void)
+\begin{DoxyCompactList}\small\item\em Realiza la consulta de la temperatura y computa el valor de acuerdo a la fórmula especificada en las hojas de datos. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_x_p_t2046_8h_aa918f24d97aff4cb300e70f526c0e135}{XPT2046\+\_\+get\+Pressure}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la presión ejercida sobre la pantalla. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_x_p_t2046_8h_ab6752751f5b8842af143fc80fd4576eb}{XPT2046\+\_\+is\+Pressed}} (void)
+\begin{DoxyCompactList}\small\item\em Consulta la señal PENIRQ del controlador, indicando si se está o no tocando la pantalla. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046_8h_a866c809b3afee72d0c801bdad016e97d}{XPT2046\+\_\+convert\+To\+Pixel\+Coord}} (uint16\+\_\+t $\ast$x\+Coord, uint16\+\_\+t $\ast$y\+Coord)
+\begin{DoxyCompactList}\small\item\em Convierte las coordenadas X e Y obtenidos con la función get\+Coord en coordenadas de pixeles en la pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de los \textquotesingle{}defines\textquotesingle{}}
+\mbox{\Hypertarget{_x_p_t2046_8h_a13887d4cedbf1ecd2e16a9f429f21eeb}\label{_x_p_t2046_8h_a13887d4cedbf1ecd2e16a9f429f21eeb}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_HIGH\_X@{CTRL\_BYTE\_HIGH\_X}}
+\index{CTRL\_BYTE\_HIGH\_X@{CTRL\_BYTE\_HIGH\_X}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_HIGH\_X}{CTRL\_BYTE\_HIGH\_X}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+X~0b1101}
+
+
+
+Parte baja del byte de control para conversión en eje X. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00075}{75}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a722718c5e2191ea42b43359cdea825a0}\label{_x_p_t2046_8h_a722718c5e2191ea42b43359cdea825a0}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_HIGH\_Y@{CTRL\_BYTE\_HIGH\_Y}}
+\index{CTRL\_BYTE\_HIGH\_Y@{CTRL\_BYTE\_HIGH\_Y}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_HIGH\_Y}{CTRL\_BYTE\_HIGH\_Y}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+Y~0b1001}
+
+
+
+Parte baja del byte de control para conversión en eje Y. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00080}{80}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a92bdb8cc485b126bb6e8cd976e7a6dcb}\label{_x_p_t2046_8h_a92bdb8cc485b126bb6e8cd976e7a6dcb}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_HIGH\_Z1@{CTRL\_BYTE\_HIGH\_Z1}}
+\index{CTRL\_BYTE\_HIGH\_Z1@{CTRL\_BYTE\_HIGH\_Z1}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_HIGH\_Z1}{CTRL\_BYTE\_HIGH\_Z1}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+\+Z1~0b1011}
+
+
+
+Parte baja del byte de control para conversión en eje Z1. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00085}{85}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_af8e12daa8ecc1cc4fa42fe2ae3c72237}\label{_x_p_t2046_8h_af8e12daa8ecc1cc4fa42fe2ae3c72237}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_HIGH\_Z2@{CTRL\_BYTE\_HIGH\_Z2}}
+\index{CTRL\_BYTE\_HIGH\_Z2@{CTRL\_BYTE\_HIGH\_Z2}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_HIGH\_Z2}{CTRL\_BYTE\_HIGH\_Z2}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+HIGH\+\_\+\+Z2~0b1100}
+
+
+
+Parte baja del byte de control para conversión en eje Z2. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00090}{90}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a91eabad167318c0872bd671f729d0c47}\label{_x_p_t2046_8h_a91eabad167318c0872bd671f729d0c47}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_TEMP0@{CTRL\_BYTE\_TEMP0}}
+\index{CTRL\_BYTE\_TEMP0@{CTRL\_BYTE\_TEMP0}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_TEMP0}{CTRL\_BYTE\_TEMP0}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+TEMP0~0b10000100}
+
+
+
+Byte de control para conversión de temperatura TEMP0. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00095}{95}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aa6a982df8fd1e1bf98dc24e77f93d28e}\label{_x_p_t2046_8h_aa6a982df8fd1e1bf98dc24e77f93d28e}} 
+\index{XPT2046.h@{XPT2046.h}!CTRL\_BYTE\_TEMP1@{CTRL\_BYTE\_TEMP1}}
+\index{CTRL\_BYTE\_TEMP1@{CTRL\_BYTE\_TEMP1}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{CTRL\_BYTE\_TEMP1}{CTRL\_BYTE\_TEMP1}}
+{\footnotesize\ttfamily \#define CTRL\+\_\+\+BYTE\+\_\+\+TEMP1~0b11110100}
+
+
+
+Byte de control para conversión de temperatura TEMP0. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00100}{100}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_adf87b6257b2164146993257e8a0fe740}\label{_x_p_t2046_8h_adf87b6257b2164146993257e8a0fe740}} 
+\index{XPT2046.h@{XPT2046.h}!MARGEN\_MAX\_X\_INFERIOR@{MARGEN\_MAX\_X\_INFERIOR}}
+\index{MARGEN\_MAX\_X\_INFERIOR@{MARGEN\_MAX\_X\_INFERIOR}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MARGEN\_MAX\_X\_INFERIOR}{MARGEN\_MAX\_X\_INFERIOR}}
+{\footnotesize\ttfamily \#define MARGEN\+\_\+\+MAX\+\_\+\+X\+\_\+\+INFERIOR~300}
+
+
+
+Margen maximo inferior del eje X. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00035}{35}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a5a9e9d1f7bedc53758268c9c17bbfbbf}\label{_x_p_t2046_8h_a5a9e9d1f7bedc53758268c9c17bbfbbf}} 
+\index{XPT2046.h@{XPT2046.h}!MARGEN\_MAX\_X\_SUPERIOR@{MARGEN\_MAX\_X\_SUPERIOR}}
+\index{MARGEN\_MAX\_X\_SUPERIOR@{MARGEN\_MAX\_X\_SUPERIOR}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MARGEN\_MAX\_X\_SUPERIOR}{MARGEN\_MAX\_X\_SUPERIOR}}
+{\footnotesize\ttfamily \#define MARGEN\+\_\+\+MAX\+\_\+\+X\+\_\+\+SUPERIOR~351}
+
+
+
+Margen maximo superior del eje X. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00040}{40}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a809c69427e4fa9463073ff4c2af7fc58}\label{_x_p_t2046_8h_a809c69427e4fa9463073ff4c2af7fc58}} 
+\index{XPT2046.h@{XPT2046.h}!MARGEN\_MAX\_Y\_INFERIOR@{MARGEN\_MAX\_Y\_INFERIOR}}
+\index{MARGEN\_MAX\_Y\_INFERIOR@{MARGEN\_MAX\_Y\_INFERIOR}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MARGEN\_MAX\_Y\_INFERIOR}{MARGEN\_MAX\_Y\_INFERIOR}}
+{\footnotesize\ttfamily \#define MARGEN\+\_\+\+MAX\+\_\+\+Y\+\_\+\+INFERIOR~464}
+
+
+
+Margen maximo inferior del eje Y. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00045}{45}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a583ba65d84857d7cc6bafeeaee9c7f5c}\label{_x_p_t2046_8h_a583ba65d84857d7cc6bafeeaee9c7f5c}} 
+\index{XPT2046.h@{XPT2046.h}!MARGEN\_MAX\_Y\_SUPERIOR@{MARGEN\_MAX\_Y\_SUPERIOR}}
+\index{MARGEN\_MAX\_Y\_SUPERIOR@{MARGEN\_MAX\_Y\_SUPERIOR}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MARGEN\_MAX\_Y\_SUPERIOR}{MARGEN\_MAX\_Y\_SUPERIOR}}
+{\footnotesize\ttfamily \#define MARGEN\+\_\+\+MAX\+\_\+\+Y\+\_\+\+SUPERIOR~191}
+
+
+
+Margen maximo inferior del eje Y. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00050}{50}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}\label{_x_p_t2046_8h_aa22b0b64525d1f5cb5a56ea783e875c3}} 
+\index{XPT2046.h@{XPT2046.h}!MAX\_12BIT\_RES@{MAX\_12BIT\_RES}}
+\index{MAX\_12BIT\_RES@{MAX\_12BIT\_RES}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_12BIT\_RES}{MAX\_12BIT\_RES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+12\+BIT\+\_\+\+RES~4095}
+
+
+
+Fondo de escala de 12 bits de resolución. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00065}{65}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a6e35bea7269b6a7e3ff7da8f440db14f}\label{_x_p_t2046_8h_a6e35bea7269b6a7e3ff7da8f440db14f}} 
+\index{XPT2046.h@{XPT2046.h}!MAX\_8BIT\_RES@{MAX\_8BIT\_RES}}
+\index{MAX\_8BIT\_RES@{MAX\_8BIT\_RES}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_8BIT\_RES}{MAX\_8BIT\_RES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+8\+BIT\+\_\+\+RES~255}
+
+
+
+Fondo de escala de 8 bits de resolución. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00070}{70}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aa30817c9de266aaece8f32cdb5999507}\label{_x_p_t2046_8h_aa30817c9de266aaece8f32cdb5999507}} 
+\index{XPT2046.h@{XPT2046.h}!SCREEN\_PIXELSIZE\_X@{SCREEN\_PIXELSIZE\_X}}
+\index{SCREEN\_PIXELSIZE\_X@{SCREEN\_PIXELSIZE\_X}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_PIXELSIZE\_X}{SCREEN\_PIXELSIZE\_X}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+PIXELSIZE\+\_\+X~240}
+
+
+
+Alto de la panatalla en pixeles. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00055}{55}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a1e8913b1100304ce96ef2eaca5fd5cc2}\label{_x_p_t2046_8h_a1e8913b1100304ce96ef2eaca5fd5cc2}} 
+\index{XPT2046.h@{XPT2046.h}!SCREEN\_PIXELSIZE\_Y@{SCREEN\_PIXELSIZE\_Y}}
+\index{SCREEN\_PIXELSIZE\_Y@{SCREEN\_PIXELSIZE\_Y}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_PIXELSIZE\_Y}{SCREEN\_PIXELSIZE\_Y}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+PIXELSIZE\+\_\+Y~320}
+
+
+
+Ancho de la panatalla en pixeles. 
+
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00060}{60}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+
+
+\doxysubsection{Documentación de las enumeraciones}
+\mbox{\Hypertarget{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}\label{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}} 
+\index{XPT2046.h@{XPT2046.h}!adcMode\_t@{adcMode\_t}}
+\index{adcMode\_t@{adcMode\_t}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{adcMode\_t}{adcMode\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}}}
+
+
+
+Tipo de dato para el modo de conversión del ADC. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_DIFF@{MODE\_DIFF}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!MODE\_DIFF@{MODE\_DIFF}}}\mbox{\Hypertarget{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462abe789df44b20d33e0209eb77cbd4b99c}\label{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462abe789df44b20d33e0209eb77cbd4b99c}} 
+MODE\+\_\+\+DIFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SER@{MODE\_SER}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!MODE\_SER@{MODE\_SER}}}\mbox{\Hypertarget{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462a81a6794f17cf7dbc4f6e444c8189c733}\label{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462a81a6794f17cf7dbc4f6e444c8189c733}} 
+MODE\+\_\+\+SER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00115}{115}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}\label{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}} 
+\index{XPT2046.h@{XPT2046.h}!adcRes\_t@{adcRes\_t}}
+\index{adcRes\_t@{adcRes\_t}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{adcRes\_t}{adcRes\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}}}
+
+
+
+Tipo de dato para la resolución del ADC. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RES\_12BITS@{RES\_12BITS}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!RES\_12BITS@{RES\_12BITS}}}\mbox{\Hypertarget{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381a8115af14d5be7aaa9c7082e55e2deae0}\label{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381a8115af14d5be7aaa9c7082e55e2deae0}} 
+RES\+\_\+12\+BITS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RES\_8BITS@{RES\_8BITS}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!RES\_8BITS@{RES\_8BITS}}}\mbox{\Hypertarget{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381aad930e8a48d0e9a37859cc47d1317138}\label{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381aad930e8a48d0e9a37859cc47d1317138}} 
+RES\+\_\+8\+BITS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00110}{110}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}\label{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}} 
+\index{XPT2046.h@{XPT2046.h}!powerMode\_t@{powerMode\_t}}
+\index{powerMode\_t@{powerMode\_t}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{powerMode\_t}{powerMode\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}}}
+
+
+
+Tipo de dato para el modo de power down. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PD\_LOWPOWER@{PD\_LOWPOWER}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!PD\_LOWPOWER@{PD\_LOWPOWER}}}\mbox{\Hypertarget{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da597a68df196288546f5a111e38c2ef4b}\label{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da597a68df196288546f5a111e38c2ef4b}} 
+PD\+\_\+\+LOWPOWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PD\_ADCON@{PD\_ADCON}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!PD\_ADCON@{PD\_ADCON}}}\mbox{\Hypertarget{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da1f6eba94ab85510e6ab34a21fcc959a5}\label{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da1f6eba94ab85510e6ab34a21fcc959a5}} 
+PD\+\_\+\+ADCON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PD\_ADCOFF@{PD\_ADCOFF}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!PD\_ADCOFF@{PD\_ADCOFF}}}\mbox{\Hypertarget{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da83c88d58e745feacac58a75bba1f7b44}\label{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da83c88d58e745feacac58a75bba1f7b44}} 
+PD\+\_\+\+ADCOFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PD\_ALLPOWERED@{PD\_ALLPOWERED}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!PD\_ALLPOWERED@{PD\_ALLPOWERED}}}\mbox{\Hypertarget{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da2b4750591c6928e8718e80f4f7af6d1c}\label{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8da2b4750591c6928e8718e80f4f7af6d1c}} 
+PD\+\_\+\+ALLPOWERED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00120}{120}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}} 
+\index{XPT2046.h@{XPT2046.h}!requestedData\_t@{requestedData\_t}}
+\index{requestedData\_t@{requestedData\_t}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{requestedData\_t}{requestedData\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}}}
+
+
+
+Tipo de dato para el valor a pedir. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COORD\_X@{COORD\_X}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!COORD\_X@{COORD\_X}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca90b0030b76559a27bf6099278d48d001}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca90b0030b76559a27bf6099278d48d001}} 
+COORD\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COORD\_Y@{COORD\_Y}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!COORD\_Y@{COORD\_Y}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca63ebf6d854e134f261b0f03b54fac644}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca63ebf6d854e134f261b0f03b54fac644}} 
+COORD\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COORD\_Z1@{COORD\_Z1}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!COORD\_Z1@{COORD\_Z1}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca70cc9fb0d7eea3dad242ea689e834991}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca70cc9fb0d7eea3dad242ea689e834991}} 
+COORD\+\_\+\+Z1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COORD\_Z2@{COORD\_Z2}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!COORD\_Z2@{COORD\_Z2}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca49a5d8b88f73cd231214a2d9f116865a}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca49a5d8b88f73cd231214a2d9f116865a}} 
+COORD\+\_\+\+Z2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEMP0@{TEMP0}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!TEMP0@{TEMP0}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca8128798e6da8000464edafb532213354}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3ca8128798e6da8000464edafb532213354}} 
+TEMP0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEMP1@{TEMP1}!XPT2046.h@{XPT2046.h}}\index{XPT2046.h@{XPT2046.h}!TEMP1@{TEMP1}}}\mbox{\Hypertarget{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3caedf4c90a6faca053d57b91c5fc07c4ba}\label{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3caedf4c90a6faca053d57b91c5fc07c4ba}} 
+TEMP1&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8h_source_l00105}{105}} del archivo \mbox{\hyperlink{_x_p_t2046_8h_source}{XPT2046.\+h}}.
+
+
+
+\doxysubsection{Documentación de las funciones}
+\mbox{\Hypertarget{_x_p_t2046_8h_a1d845a3398c90565ab9109c5d210bbe4}\label{_x_p_t2046_8h_a1d845a3398c90565ab9109c5d210bbe4}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_chipDisable@{XPT2046\_chipDisable}}
+\index{XPT2046\_chipDisable@{XPT2046\_chipDisable}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_chipDisable()}{XPT2046\_chipDisable()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+chip\+Disable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Deshabilita la interfaz SPI poniendo el pin CS en nivel alto. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00084}{84}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a9202a767dca565a661eadb1987d7e2d6}\label{_x_p_t2046_8h_a9202a767dca565a661eadb1987d7e2d6}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_chipEnable@{XPT2046\_chipEnable}}
+\index{XPT2046\_chipEnable@{XPT2046\_chipEnable}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_chipEnable()}{XPT2046\_chipEnable()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+chip\+Enable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Habilita la interfaz SPI poniendo el pin CS en nivel bajo. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00079}{79}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a866c809b3afee72d0c801bdad016e97d}\label{_x_p_t2046_8h_a866c809b3afee72d0c801bdad016e97d}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_convertToPixelCoord@{XPT2046\_convertToPixelCoord}}
+\index{XPT2046\_convertToPixelCoord@{XPT2046\_convertToPixelCoord}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_convertToPixelCoord()}{XPT2046\_convertToPixelCoord()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+convert\+To\+Pixel\+Coord (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{x\+Coord,  }\item[{uint16\+\_\+t $\ast$}]{y\+Coord }\end{DoxyParamCaption})}
+
+
+
+Convierte las coordenadas X e Y obtenidos con la función get\+Coord en coordenadas de pixeles en la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve las coordenadas X e Y mapeadas a pixeles de la pantalla. El rango de valores es de 0 a 320 para el eje X y de 0 a 240 para el Y 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00114}{114}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_ab74a91ad243afa84b77297e6bf3a6a52}\label{_x_p_t2046_8h_ab74a91ad243afa84b77297e6bf3a6a52}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_getConversionData@{XPT2046\_getConversionData}}
+\index{XPT2046\_getConversionData@{XPT2046\_getConversionData}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getConversionData()}{XPT2046\_getConversionData()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+get\+Conversion\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data\+Ptr,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Envía 16 clocks por SPI para recibir dos bytes. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00096}{96}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aead81beff8686109638009b9f602dceb}\label{_x_p_t2046_8h_aead81beff8686109638009b9f602dceb}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_getCoord@{XPT2046\_getCoord}}
+\index{XPT2046\_getCoord@{XPT2046\_getCoord}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getCoord()}{XPT2046\_getCoord()}}
+{\footnotesize\ttfamily uint16\+\_\+t XPT2046\+\_\+get\+Coord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_x_p_t2046_8h_a740093714a9759d25f97a46afa7a0c3c}{requested\+Data\+\_\+t}}}]{coord }\end{DoxyParamCaption})}
+
+
+
+Realiza la consulta de la coordenada. 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\mbox{\texttt{ in}}  & {\em coord} & Valor a consultar al ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor de la coordenada consultada. Representa el valor convertido por el ADC del controlador. Rango de valores\+: 0 a 4095 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00028}{28}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aa918f24d97aff4cb300e70f526c0e135}\label{_x_p_t2046_8h_aa918f24d97aff4cb300e70f526c0e135}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_getPressure@{XPT2046\_getPressure}}
+\index{XPT2046\_getPressure@{XPT2046\_getPressure}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getPressure()}{XPT2046\_getPressure()}}
+{\footnotesize\ttfamily uint16\+\_\+t XPT2046\+\_\+get\+Pressure (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la presión ejercida sobre la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la presión sobre la pantalla 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00080}{80}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a8c6ad8261bb115bfa1dad8ad5275e122}\label{_x_p_t2046_8h_a8c6ad8261bb115bfa1dad8ad5275e122}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_getTemp@{XPT2046\_getTemp}}
+\index{XPT2046\_getTemp@{XPT2046\_getTemp}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_getTemp()}{XPT2046\_getTemp()}}
+{\footnotesize\ttfamily float XPT2046\+\_\+get\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Realiza la consulta de la temperatura y computa el valor de acuerdo a la fórmula especificada en las hojas de datos. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la temperatura del chip 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00095}{95}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_ab6752751f5b8842af143fc80fd4576eb}\label{_x_p_t2046_8h_ab6752751f5b8842af143fc80fd4576eb}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_isPressed@{XPT2046\_isPressed}}
+\index{XPT2046\_isPressed@{XPT2046\_isPressed}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_isPressed()}{XPT2046\_isPressed()}}
+{\footnotesize\ttfamily bool XPT2046\+\_\+is\+Pressed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Consulta la señal PENIRQ del controlador, indicando si se está o no tocando la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si se este tocando, false en caso contrario 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00109}{109}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a7b4f078e876a608e843422d657af0c2c}\label{_x_p_t2046_8h_a7b4f078e876a608e843422d657af0c2c}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_readPENIRQ@{XPT2046\_readPENIRQ}}
+\index{XPT2046\_readPENIRQ@{XPT2046\_readPENIRQ}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_readPENIRQ()}{XPT2046\_readPENIRQ()}}
+{\footnotesize\ttfamily bool XPT2046\+\_\+read\+PENIRQ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Lee el pin asociado a la señal PENIRQ del controlador. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00106}{106}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_a81e5426250cf8c57de239aa4e590f6c5}\label{_x_p_t2046_8h_a81e5426250cf8c57de239aa4e590f6c5}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_setControllerConfig@{XPT2046\_setControllerConfig}}
+\index{XPT2046\_setControllerConfig@{XPT2046\_setControllerConfig}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_setControllerConfig()}{XPT2046\_setControllerConfig()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+set\+Controller\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_x_p_t2046_8h_a1bf2bb09343c489fafae413c2dbe2381}{adc\+Res\+\_\+t}}}]{res,  }\item[{\mbox{\hyperlink{_x_p_t2046_8h_a56ed80e9a8516b69366c829c1131a462}{adc\+Mode\+\_\+t}}}]{mode,  }\item[{\mbox{\hyperlink{_x_p_t2046_8h_a29c5a01bb3a41167f0e763f226aadc8d}{power\+Mode\+\_\+t}}}]{pd,  }\item[{uint16\+\_\+t}]{rxplate }\end{DoxyParamCaption})}
+
+
+
+Configura el handler con los parámetros especificados. 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\mbox{\texttt{ in}}  & {\em res} & Resolución del ADC \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & Modo de operación del ADC \\
+\hline
+\mbox{\texttt{ in}}  & {\em pd} & Modo power down \\
+\hline
+\mbox{\texttt{ in}}  & {\em rxplate} & Valor de la red resistiva del eje X \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor de la coordenada consultada. El valor representa el valor convertido por el ADC del controlador. Rango de valores\+: 0 a 4095 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{_x_p_t2046_8c_source_l00016}{16}} del archivo \mbox{\hyperlink{_x_p_t2046_8c_source}{XPT2046.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_aacd0c6cdb8ac9ec9724e003907dd6964}\label{_x_p_t2046_8h_aacd0c6cdb8ac9ec9724e003907dd6964}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_SPIConfig@{XPT2046\_SPIConfig}}
+\index{XPT2046\_SPIConfig@{XPT2046\_SPIConfig}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_SPIConfig()}{XPT2046\_SPIConfig()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+\+SPIConfig (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configura el periférico SPI mediante el handler. 
+
+SPI3 GPIO Configuration PB3 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+SCK PB4 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+MISO PB5 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+MOSI PA4 -\/-\/-\/---\texorpdfstring{$>$}{>} SPI3\+\_\+\+NSS
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00021}{21}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
+\mbox{\Hypertarget{_x_p_t2046_8h_af5610af08a4da6c5bbbe063727c768b7}\label{_x_p_t2046_8h_af5610af08a4da6c5bbbe063727c768b7}} 
+\index{XPT2046.h@{XPT2046.h}!XPT2046\_startConversion@{XPT2046\_startConversion}}
+\index{XPT2046\_startConversion@{XPT2046\_startConversion}!XPT2046.h@{XPT2046.h}}
+\doxysubsubsection{\texorpdfstring{XPT2046\_startConversion()}{XPT2046\_startConversion()}}
+{\footnotesize\ttfamily void XPT2046\+\_\+start\+Conversion (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Envía el byte de control al periférico SPI. 
+
+
+
+Definición en la línea \mbox{\hyperlink{port_8c_source_l00089}{89}} del archivo \mbox{\hyperlink{port_8c_source}{port.\+c}}.
+
