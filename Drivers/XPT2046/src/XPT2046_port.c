@@ -1,5 +1,5 @@
 /*
- * port.c
+ * XPT2046_port.c
  *
  *  Created on: May 28, 2022
  *      Author: Lucas
